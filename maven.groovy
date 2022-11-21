@@ -25,7 +25,7 @@ def call()
   stage('Sonar Maven')
   {
       echo '(Pre) Sonar Maven'
-      withSonarQubeEnv('MySonarQubeServer') 
+      withSonarQubeEnv('Sonita') 
       { // If you have configured more than one global server connection, you can specify its name
         sh './mvnw clean package sonar:sonar'
       }
@@ -48,7 +48,7 @@ stage('uploadNexus')
   echo '(Pre) uploadNexus'
   //slackSend color: "warning", message: "Uploading to Nexus..."
   sh './mvnw clean install -e'
-  nexusPublisher nexusInstanceId: 'nexusserverid', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]	
+  nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]	
   echo '(Post) uploadNexus'  
 }
 }
