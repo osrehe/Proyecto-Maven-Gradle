@@ -6,7 +6,7 @@ stage('Build Gradle')
             sh 'chmod -R 777 $WORKSPACE'
             sh './gradlew build'
   }
-       /* stage('Sonar')
+        stage('Sonar')
         {
                 echo 'Sonar...'
                 withSonarQubeEnv('MySonarQubeServer') 
@@ -32,7 +32,7 @@ stage('Build Gradle')
                 //slackSend color: "warning", message: "Uploading to Nexus..."
                 sh './mvnw clean install -e'
                 nexusPublisher nexusInstanceId: 'nexusserverid', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]	
-	}*/
+	}
 }
 
 return this;
