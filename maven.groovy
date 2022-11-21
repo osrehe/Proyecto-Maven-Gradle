@@ -15,7 +15,7 @@ def call()
       echo "(Post) Testing"
   }
   
- /* stage('Package Maven')
+  stage('Package Maven')
   {
       echo "(Pre) Packaging Maven"
       sh './mvnw package -e'
@@ -50,7 +50,7 @@ stage('uploadNexus')
   sh './mvnw clean install -e'
   nexusPublisher nexusInstanceId: 'nexusserverid', nexusRepositoryId: 'devops-usach-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: './build/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]	
   echo '(Post) uploadNexus'  
-}*/
+}
 }
 
 return this;
