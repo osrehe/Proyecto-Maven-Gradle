@@ -27,7 +27,7 @@ def call()
       echo '(Pre) Sonar Maven'
       withSonarQubeEnv('Sonita') 
       { // If you have configured more than one global server connection, you can specify its name
-        sh './mvnw clean package sonar:sonar'
+        sh './mvnw clean verify sonar:sonar -Dsonar.projectKey=RemoteGradle'
       }
       echo '(Post) Sonar Maven'
   }
